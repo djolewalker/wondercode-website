@@ -15,11 +15,18 @@ export const StyledButton = styled("button")<{ color?: string }>`
   transition: all 0.3s ease-in-out;
   box-shadow: 0 16px 30px rgb(23 31 114 / 20%);
 
-  &:hover,
-  &:active,
-  &:focus {
-    color: #fff;
-    border: 1px solid #6db5e7;
-    background-color: #6db5e7;
+  &:disabled {
+    cursor: unset;
+    opacity: 0.6;
+  }
+
+  &:not(:disabled) {
+    &:hover,
+    &:active,
+    &:focus {
+      color: #fff;
+      border: 1px solid #6db5e7;
+      background-color: #6db5e7;
+    }
   }
 `;

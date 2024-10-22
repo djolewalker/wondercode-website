@@ -74,7 +74,6 @@ export const Empty = styled("div")`
 export const FooterContainer = styled("div")`
   max-width: 510px;
   gap: 30px;
-  width: 100%;
   display: flex;
   justify-content: flex-end;
   text-align: center;
@@ -88,14 +87,6 @@ export const FooterContainer = styled("div")`
       -webkit-transform: scale(1.1);
       -ms-transform: scale(1.1);
       transform: scale(1.1);
-    }
-  }
-
-  @media screen and (max-width: 769px) {
-    width: auto;
-
-    a:not(:last-child) {
-      display: none;
     }
   }
 

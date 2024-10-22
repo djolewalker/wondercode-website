@@ -14,6 +14,7 @@ const initialValues: IValues = {
 };
 
 export const useForm = (validate: { (values: IValues): IValues }) => {
+  const [isLoading, setIsLoading] = useState(false);
   const [formState, setFormState] = useState<{
     values: IValues;
     errors: IValues;
@@ -32,6 +33,7 @@ export const useForm = (validate: { (values: IValues): IValues }) => {
 
     try {
       if (Object.values(errors).every((error) => error === "")) {
+        setIsLoading(true);
         const response = await fetch(url, {
           method: "POST",
           headers: {
@@ -64,6 +66,8 @@ export const useForm = (validate: { (values: IValues): IValues }) => {
         message: "Error",
         description: "Failed to submit form. Please try again later.",
       });
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -86,6 +90,7 @@ export const useForm = (validate: { (values: IValues): IValues }) => {
   };
 
   return {
+    isLoading,
     handleChange,
     handleSubmit,
     values: formState.values,
